@@ -32,22 +32,22 @@ func (c *AuthController) LoginLos(ctx echo.Context) error {
 	var loginDto dto.LoginDto
 	if err := ctx.Bind(&loginDto); err != nil {
 		session.SetFlashMessage(ctx, "error binding data", "error", nil)
-		return ctx.Redirect(302, "/scorepro/auth/login")
+		return ctx.Redirect(302, "/check/auth/login")
 	}
 	if err := ctx.Validate(&loginDto); err != nil {
 		session.SetFlashMessage(ctx, "validation Error", "error", nil)
-		return ctx.Redirect(302, "/scorepro/auth/login")
+		return ctx.Redirect(302, "/check/auth/login")
 	}
 
 	//Search Email
 	data, err := c.authService.FindUserByEmail(loginDto.Email)
 	if err != nil {
 		session.SetFlashMessage(ctx, err.Error(), "error", nil)
-		return ctx.Redirect(302, "/scorepro/auth/login")
+		return ctx.Redirect(302, "/check/auth/login")
 	}
 	if !utils.CheckPasswordHash(loginDto.Password, data.Password) {
 		session.SetFlashMessage(ctx, "wrong email or password", "error", nil)
-		return ctx.Redirect(302, "/scorepro/auth/login")
+		return ctx.Redirect(302, "/check/auth/login")
 	}
 	//Search Branch
 	userInfo := session.UserInfo{
@@ -59,19 +59,19 @@ func (c *AuthController) LoginLos(ctx echo.Context) error {
 	}
 	if err := session.Manager.Set(ctx, session.SessionId, &userInfo); err != nil {
 		session.SetFlashMessage(ctx, err.Error(), "error", nil)
-		return ctx.Redirect(302, "/scorepro/auth/login")
+		return ctx.Redirect(302, "/check/auth/login")
 	}
 	session.SetFlashMessage(ctx, "login success", "success", nil)
 
-	return ctx.Redirect(302, "/scorepro/admin/home")
+	return ctx.Redirect(302, "/check/admin/home")
 }
 
 func (c *AuthController) Logout(ctx echo.Context) error {
 	err := session.Manager.Delete(ctx, session.SessionId)
 	if err != nil {
 		session.SetFlashMessage(ctx, err.Error(), "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/home")
+		return ctx.Redirect(302, "/check/admin/home")
 	}
 	session.SetFlashMessage(ctx, "logout success", "success", nil)
-	return ctx.Redirect(http.StatusFound, "/scorepro/auth/login")
+	return ctx.Redirect(http.StatusFound, "/check/auth/login")
 }

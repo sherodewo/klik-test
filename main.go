@@ -43,7 +43,7 @@ func main() {
 		return c.Render(http.StatusNotFound, "auth/error.html", nil)
 	}
 
-	e.Static("/scorepro/assets", "assets")
+	e.Static("/check/assets", "assets")
 
 	e.Pre(middleware.RemoveTrailingSlash())
 

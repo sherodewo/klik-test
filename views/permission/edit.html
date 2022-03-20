@@ -12,8 +12,8 @@
                 </div>
 
                 <!--begin::Form-->
-                <form class="kt-form" method="POST" action="/scorepro/admin/permissions/update/{{.data.ID}}">
-                    <input type="hidden" name="csrf" value="{{ getCsrfToken .ctx }}">
+                <form class="kt-form" method="POST" action="/check/admin/permissions/update/{{.data.ID}}">
+
                     <div class="kt-portlet__body">
                         {{if .flashMessage}}
                             {{if (eq .flashMessage.Type "error")}}
@@ -50,7 +50,7 @@
                             <button type="submit" class="btn btn-primary btn-brand btn-pill btn-elevate"
                                     id="kt_submit_update">Submit
                             </button>
-                            <a href="/scorepro/admin/permissions/list" class="btn btn-secondary">Cancel</a>
+                            <a href="/check/admin/permissions/list" class="btn btn-secondary">Cancel</a>
                         </div>
                     </div>
                 </form>

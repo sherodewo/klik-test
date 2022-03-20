@@ -12,8 +12,7 @@
                 </div>
 
                 <!--begin::Form-->
-                <form class="kt-form" method="POST" action="/scorepro/admin/register/store" enctype="multipart/form-data">
-                    <input id="token" name="csrf" value="{{ getCsrfToken .ctx }}" hidden>
+                <form class="kt-form" method="POST" action="/check/admin/register/store" enctype="multipart/form-data">
                     <div class="kt-portlet__body">
 
                         <div class="kt-section kt-section--first">
@@ -93,7 +92,7 @@
                             <button type="submit" class="btn btn-primary btn-brand btn-pill btn-elevate" id="kt_submit">
                                 Submit
                             </button>
-                            <a href="/scorepro/admin/register" class="btn btn-secondary" id="cancel">Cancel</a>
+                            <a href="/check/admin/register" class="btn btn-secondary" id="cancel">Cancel</a>
                         </div>
                     </div>
                 </form>
@@ -170,12 +169,9 @@
             });
             form.ajaxSubmit({
                 type: 'POST',
-                url: '/scorepro/admin/register/store',
+                url: '/check/admin/register/store',
                 beforeSend: function (req) {
-                    var csrfToken = $("input[name=csrf_token]").val();
-                    console.log(csrfToken)
 
-                    req.setRequestHeader("X-CSRF-TOKEN", csrfToken)
                 },
                 success: function (response, status, xhr, $form) {
                     // similate 2s delay
@@ -186,7 +182,7 @@
                         icon: 'success',
                         text: "Data berhasil disimpan",
                     });
-                    window.location.href = "/scorepro/admin/register";
+                    window.location.href = "/check/admin/register";
                 },
                 error: function (response, status, xhr, $form) {
                     swal.hideLoading();
@@ -205,7 +201,7 @@
         //     allowClear: true,
         //     multiple: false,
         //     ajax: {
-        //         url: '/scorepro/admin/roles/select2',
+        //         url: '/check/admin/roles/select2',
         //         datatype: 'json',
         //         delay: 250,
         //         processResults: function (data) {

@@ -11,7 +11,6 @@ import (
 	"github.com/foolin/goview"
 
 	"github.com/labstack/echo/v4"
-	echoMiddleware "github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
 	"go-checkin/controllers"
 	"go-checkin/middleware"
@@ -78,9 +77,6 @@ func BackendRoute(e *echo.Echo, db *gorm.DB) {
 				}
 				return result
 			},
-			"getCsrfToken": func(ctx echo.Context) string {
-				return ctx.Get("csrf_token").(string)
-			},
 			"MenuParent": func(ctx echo.Context) []map[string]interface{} {
 				var dataMenu map[string]interface{}
 				var listOfMenu []map[string]interface{}
@@ -142,14 +138,8 @@ func BackendRoute(e *echo.Echo, db *gorm.DB) {
 
 	// You should use helper func `Middleware()` to set the supplied
 	// TemplateEngine and make `HTML()` work validly.
-	bGroup := e.Group("/scorepro")
-	backendGroup := bGroup.Group("/admin", mv, echoMiddleware.CSRFWithConfig(echoMiddleware.CSRFConfig{
-		TokenLookup: "form:csrf",
-		ContextKey:  "csrf_token",
-		Skipper: func(i echo.Context) bool {
-			return false
-		},
-	}), middleware.SessionMiddleware(session.Manager))
+	bGroup := e.Group("/check")
+	backendGroup := bGroup.Group("/admin", mv, middleware.SessionMiddleware(session.Manager))
 	authorizationMiddleware := middleware.NewAuthorizationMiddleware(db)
 
 	var menus []models.Menu

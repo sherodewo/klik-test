@@ -31,7 +31,7 @@ func NewUserController(service *service.UserService) UserController {
 func (c *UserController) Index(ctx echo.Context) error {
 	breadCrumbs := map[string]interface{}{
 		"menu": "List User",
-		"link": "/scorepro/admin/users",
+		"link": "/check/admin/users",
 	}
 	return Render(ctx, "User List", "user/index", c.Menu, session.GetFlashMessage(ctx),
 		append(c.BreadCrumbs, breadCrumbs), nil)
@@ -40,7 +40,7 @@ func (c *UserController) Index(ctx echo.Context) error {
 func (c *UserController) Add(ctx echo.Context) error {
 	breadCrumbs := map[string]interface{}{
 		"menu": "Add",
-		"link": "/scorepro/admin/users/add",
+		"link": "/check/admin/users/add",
 	}
 	var Role []models.UserRole
 	_ = c.service.GetDbInstance().Find(&Role)
@@ -73,11 +73,11 @@ func (c *UserController) List(ctx echo.Context) error {
 					<button class="btn btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true"> Actions</button>
                       <ul class="dropdown-menu" role="menu">
                       <li>
-                      <a href="/scorepro/admin/register/edit/` + v.UserID + `" style="text-decoration: none;font-weight: 400; color: #333;">
+                      <a href="/check/admin/register/edit/` + v.UserID + `" style="text-decoration: none;font-weight: 400; color: #333;">
                       <i class="fa fa-edit"></i>Edit </a>
                       </li>
                       <li>
-                      <a href="/scorepro/admin/register/detail/` + v.UserID + `"style="text-decoration: none;font-weight: 400; color: #333;">
+                      <a href="/check/admin/register/detail/` + v.UserID + `"style="text-decoration: none;font-weight: 400; color: #333;">
                       <i class="fa fa-user"></i>Detail </a>
                       </li>
                       <li>
@@ -143,14 +143,14 @@ func (c *UserController) Edit(ctx echo.Context) error {
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			session.SetFlashMessage(ctx, err.Error(), "error", nil)
-			return ctx.Redirect(302, "/scorepro/admin/users")
+			return ctx.Redirect(302, "/check/admin/users")
 		}
 		session.SetFlashMessage(ctx, err.Error(), "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/users")
+		return ctx.Redirect(302, "/check/admin/users")
 	}
 	breadCrumbs := map[string]interface{}{
 		"menu": "Edit",
-		"link": "/scorepro/admin/users/edit",
+		"link": "/check/admin/users/edit",
 	}
 
 	dataUser := models.UserViewDetail{
@@ -177,14 +177,14 @@ func (c *UserController) View(ctx echo.Context) error {
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			session.SetFlashMessage(ctx, err.Error(), "error", nil)
-			return ctx.Redirect(302, "/scorepro/admin/users")
+			return ctx.Redirect(302, "/check/admin/users")
 		}
 		session.SetFlashMessage(ctx, err.Error(), "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/users")
+		return ctx.Redirect(302, "/check/admin/users")
 	}
 	breadCrumbs := map[string]interface{}{
 		"menu": "Detail User",
-		"link": "/scorepro/admin/users/detail",
+		"link": "/check/admin/users/detail",
 	}
 	return Render(ctx, "Detail User ", "user/view", c.Menu, session.FlashMessage{},
 		append(c.BreadCrumbs, breadCrumbs), echo.Map{"User": data})
@@ -247,7 +247,7 @@ func (c *UserController) Delete(ctx echo.Context) error {
 func (c *UserController) Profile(ctx echo.Context) error {
 	breadCrumbs := map[string]interface{}{
 		"menu": "profile",
-		"link": "/scorepro/admin/users/profile",
+		"link": "/check/admin/users/profile",
 	}
 	return Render(ctx, "Profile User", "user/profile", c.Menu, session.GetFlashMessage(ctx),
 		append(c.BreadCrumbs, breadCrumbs), nil)
