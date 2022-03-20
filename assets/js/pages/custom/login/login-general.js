@@ -98,8 +98,7 @@ var KTLoginGeneral = function () {
                 type: 'POST',
                 url: '/login',
                 beforeSend: function (req) {
-                    var csrfToken = $("input[name=csrf_token]").val();
-                    req.setRequestHeader("X-XSRF-TOKEN", csrfToken)
+                    
                 },
                 success: function (response, status, xhr, $form) {
                     // similate 2s delay
@@ -152,8 +151,7 @@ var KTLoginGeneral = function () {
                 type: 'POST',
                 url: '/register',
                 beforeSend: function (req) {
-                    var csrfToken = $("input[name=csrf_token]").val();
-                    req.setRequestHeader("X-XSRF-TOKEN", csrfToken)
+                    
                 },
                 success: function (response, status, xhr, $form) {
                     // similate 2s delay
