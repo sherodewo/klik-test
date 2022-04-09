@@ -178,4 +178,40 @@ func BackendRoute(e *echo.Echo, db *gorm.DB) {
 	configGroup.POST("/delete/:id", configController.Delete)
 	bGroup.POST("/admin/config/set-active/:id", configController.SetActive)
 	bGroup.POST("/admin/config/set-inactive/:id", configController.SetInactive)
+
+	// RoleController
+	roleController := config.InjectRoleController(db)
+	roleGroup := backendGroup.Group("/role",authorizationMiddleware.AuthorizationMiddleware(menus,"role"))
+	roleGroup.GET("",roleController.Index)
+	roleGroup.GET("/datatable", roleController.List)
+	roleGroup.GET("/add",roleController.Add)
+	roleGroup.POST("/store",roleController.Store)
+	roleGroup.GET("/edit/:id",roleController.Edit)
+	roleGroup.POST("/update/:id",roleController.Update)
+	roleGroup.GET("/detail/:id",roleController.View)
+	roleGroup.DELETE("/delete/:id",roleController.Delete)
+
+	// DevisiController
+	devisiController := config.InjectDevisiController(db)
+	devisiGroup := backendGroup.Group("/devisi",authorizationMiddleware.AuthorizationMiddleware(menus,"devisi"))
+	devisiGroup.GET("",devisiController.Index)
+	devisiGroup.GET("/datatable", devisiController.List)
+	devisiGroup.GET("/add",devisiController.Add)
+	devisiGroup.POST("/store",devisiController.Store)
+	devisiGroup.GET("/edit/:id",devisiController.Edit)
+	devisiGroup.POST("/update/:id",devisiController.Update)
+	devisiGroup.GET("/detail/:id",devisiController.View)
+	devisiGroup.DELETE("/delete/:id",devisiController.Delete)
+
+	// JabatanController
+	jabatanController := config.InjectDevisiController(db)
+	jabatanGroup := backendGroup.Group("/jabatan",authorizationMiddleware.AuthorizationMiddleware(menus,"jabatan"))
+	jabatanGroup.GET("",jabatanController.Index)
+	jabatanGroup.GET("/datatable", jabatanController.List)
+	jabatanGroup.GET("/add",jabatanController.Add)
+	jabatanGroup.POST("/store",jabatanController.Store)
+	jabatanGroup.GET("/edit/:id",jabatanController.Edit)
+	jabatanGroup.POST("/update/:id",jabatanController.Update)
+	jabatanGroup.GET("/detail/:id",jabatanController.View)
+	jabatanGroup.DELETE("/delete/:id",jabatanController.Delete)
 }
