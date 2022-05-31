@@ -42,3 +42,21 @@ func InjectConfigController(db *gorm.DB) controllers.ConfigController {
 	return controller
 }
 
+func InjectRoleController(db *gorm.DB) controllers.RoleController {
+	repository := repository.NewRoleRepository(db)
+	service := service.NewRoleService(repository)
+	controller := controllers.NewRoleController(service)
+	return controller
+}
+func InjectDevisiController(db *gorm.DB) controllers.DevisiController {
+	repository := repository.NewDevisiRepository(db)
+	service := service.NewDevisiService(repository)
+	controller := controllers.NewDevisiController(service)
+	return controller
+}
+func InjectJabatanController(db *gorm.DB) controllers.JabatanController {
+	repository := repository.NewJabatanRepository(db)
+	service := service.NewJabatanService(repository)
+	controller := controllers.NewJabatanController(service)
+	return controller
+}
