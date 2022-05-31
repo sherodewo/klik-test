@@ -23,7 +23,7 @@ func NewConfigController(service *service.ConfigService) ConfigController {
 			BreadCrumbs: []map[string]interface{}{
 				0: {
 					"menu": "Menu",
-					"link": "/scorepro/admin/config",
+					"link": "/check/admin/config",
 				},
 			},
 		},
@@ -34,7 +34,7 @@ func NewConfigController(service *service.ConfigService) ConfigController {
 func (c *ConfigController) Index(ctx echo.Context) error {
 	breadCrumbs := map[string]interface{}{
 		"menu": "List Configuration",
-		"link": "/scorepro/admin/config/list",
+		"link": "/check/admin/config/list",
 	}
 	return Render(ctx, "List Config", "config/index", c.Menu, session.GetFlashMessage(ctx),
 		append(c.BreadCrumbs, breadCrumbs), nil)
@@ -60,9 +60,9 @@ func (c *ConfigController) Datatable(ctx echo.Context) error {
 
 	listOfData := make([]map[string]interface{}, len(data))
 	for k, v := range data {
-		//action = `<a href="/scorepro/admin/config/submenu/` + v.ID + `/list" data-toggle="tooltip" data-placement="right" title="Add sub menu"><i class="la la-plus"></i></a>`
-		//action += `<a href="/scorepro/admin/config/detail/` + v.ID + `" data-toggle="tooltip" data-placement="right" title="Detail"><i class="fa fa-user"></i> </a>`
-		//action += `<a href="/scorepro/admin/config/edit/` + v.ID + `" data-toggle="tooltip" data-placement="right" title="Edit"><i class="fa fa-edit"></i> </a>`
+		//action = `<a href="/check/admin/config/submenu/` + v.ID + `/list" data-toggle="tooltip" data-placement="right" title="Add sub menu"><i class="la la-plus"></i></a>`
+		//action += `<a href="/check/admin/config/detail/` + v.ID + `" data-toggle="tooltip" data-placement="right" title="Detail"><i class="fa fa-user"></i> </a>`
+		//action += `<a href="/check/admin/config/edit/` + v.ID + `" data-toggle="tooltip" data-placement="right" title="Edit"><i class="fa fa-edit"></i> </a>`
 		//action += `<a href="JavaScript:void(0);" onclick="SetActive('` + v.ID + `')" data-toggle="tooltip" data-placement="right" title="Set Active"><i class="fa fa-lock-open"></i></a>`
 		//action += `<a href="JavaScript:void(0);" onclick="SetInactive('` + v.ID + `')" data-toggle="tooltip" data-placement="right" title="Set Inactive"><i class="fa fa-lock" style="color: #ff4d65"></i></a>`
 		//action += `<a href="JavaScript:void(0);" onclick="Delete('` + v.ID + `')" data-toggle="tooltip" data-placement="right" title="Delete"><i class="fa fa-trash" style="color: #ff4d65"></i></a>`
@@ -123,20 +123,20 @@ func (c *ConfigController) Store(ctx echo.Context) error {
 	var menuDto dto.AppConfDto
 	if err := ctx.Bind(&menuDto); err != nil {
 		session.SetFlashMessage(ctx, "error binding data", "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/config")
+		return ctx.Redirect(302, "/check/admin/config")
 	}
 	menuDto.IsActive = 1
 	if err := ctx.Validate(&menuDto); err != nil {
 		session.SetFlashMessage(ctx, "Validation Error", "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/config")
+		return ctx.Redirect(302, "/check/admin/config")
 	}
 	result, err := c.service.StoreMenu(menuDto)
 	if err != nil {
 		session.SetFlashMessage(ctx, err.Error(), "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/config")
+		return ctx.Redirect(302, "/check/admin/config")
 	}
 	session.SetFlashMessage(ctx, "store data success", "success", result)
-	return ctx.Redirect(302, "/scorepro/admin/config/list")
+	return ctx.Redirect(302, "/check/admin/config/list")
 }
 
 func (c *ConfigController) Detail(ctx echo.Context) error {
@@ -145,10 +145,10 @@ func (c *ConfigController) Detail(ctx echo.Context) error {
 	if err != nil {
 		if gorm.IsRecordNotFoundError(err) {
 			session.SetFlashMessage(ctx, err.Error(), "error", nil)
-			return ctx.Redirect(302, "/scorepro/admin/config")
+			return ctx.Redirect(302, "/check/admin/config")
 		}
 		session.SetFlashMessage(ctx, err.Error(), "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/config")
+		return ctx.Redirect(302, "/check/admin/config")
 	}
 
 	return ctx.JSON(http.StatusOK, data)
@@ -168,21 +168,21 @@ func (c *ConfigController) Update(ctx echo.Context) error {
 	var req dto.AppConfDto
 	if err := ctx.Bind(&req); err != nil {
 		session.SetFlashMessage(ctx, "error binding data", "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/config/list")
+		return ctx.Redirect(302, "/check/admin/config/list")
 	}
 
 	if err := ctx.Validate(&req); err != nil {
 		session.SetFlashMessage(ctx, "Validation Error", "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/config/edit/"+id)
+		return ctx.Redirect(302, "/check/admin/config/edit/"+id)
 	}
 
 	result, err := c.service.UpdateConfig(id, req)
 	if err != nil {
 		session.SetFlashMessage(ctx, err.Error(), "error", nil)
-		return ctx.Redirect(302, "/scorepro/admin/config/list")
+		return ctx.Redirect(302, "/check/admin/config/list")
 	}
 	session.SetFlashMessage(ctx, "update data success", "success", result)
-	return ctx.Redirect(302, "/scorepro/admin/config/list")
+	return ctx.Redirect(302, "/check/admin/config/list")
 }
 
 func (c *ConfigController) SetActive(ctx echo.Context) error {

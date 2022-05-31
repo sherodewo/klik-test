@@ -8,9 +8,9 @@ import (
 func ApiRoute(e *echo.Echo, db *gorm.DB) {
 	//aGroup := e.Group("api/v1")
 	//telcoScoreController := config.InjectTelcoScoreController(db)
-	//scoreproController := config.InjectScoreproController(db)
-	//kmbController := config.InjectKmbScoreproController(db)
-	//wgController := config.InjectWgScoreproController(db)
+	//checkController := config.InjectcheckController(db)
+	//kmbController := config.InjectKmbcheckController(db)
+	//wgController := config.InjectWgcheckController(db)
 	//telcoGroup := aGroup.Group("/score")
 	//{
 	//	telcoGroup.POST("/credit/:phoneNumber", telcoScoreController.CreditScore)
@@ -22,18 +22,18 @@ func ApiRoute(e *echo.Echo, db *gorm.DB) {
 	//}
 	//
 	//{
-	//	scoreproGroup := aGroup.Group("/scorepro")
-	//	scoreproGroup.POST("/idx", scoreproController.Scoring)
-	//	scoreproGroup.GET("/detail/:id", scoreproController.Detail)
+	//	checkGroup := aGroup.Group("/check")
+	//	checkGroup.POST("/idx", checkController.Scoring)
+	//	checkGroup.GET("/detail/:id", checkController.Detail)
 	//}
 	//
 	//{
-	//	kmbGroup := aGroup.Group("/scorepro/kmb")
+	//	kmbGroup := aGroup.Group("/check/kmb")
 	//	kmbGroup.POST("/idx", kmbController.Scoring)
 	//}
 	//
 	//{
-	//	wgGroup := aGroup.Group("/scorepro/wg")
+	//	wgGroup := aGroup.Group("/check/wg")
 	//	wgGroup.POST("/idx", wgController.Scoring)
 	//}
 

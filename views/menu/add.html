@@ -12,8 +12,8 @@
                 </div>
 
                 <!--begin::Form-->
-                <form class="kt-form" method="POST" action="/scorepro/admin/menus/store" enctype="multipart/form-data">
-                    <input type="hidden" id="token" name="csrf" value="{{ getCsrfToken .ctx }}">
+                <form class="kt-form" method="POST" action="/check/admin/menus/store" enctype="multipart/form-data">
+
                     <div class="kt-portlet__body">
                         {{if .flashMessage}}
                             {{if (eq .flashMessage.Type "error")}}
@@ -84,7 +84,7 @@
                             <button type="submit" class="btn btn-primary btn-brand btn-pill btn-elevate" id="kt_submit">
                                 Submit
                             </button>
-                            <a href="/scorepro/admin/menus/list" class="btn btn-secondary">Cancel</a>
+                            <a href="/check/admin/menus/list" class="btn btn-secondary">Cancel</a>
                         </div>
                     </div>
                 </form>
@@ -105,7 +105,7 @@
         allowClear: true,
         multiple: true,
         ajax: {
-            url: '/scorepro/admin/roles/select2',
+            url: '/check/admin/roles/select2',
             datatype: 'json',
             delay: 250,
             processResults: function (data) {

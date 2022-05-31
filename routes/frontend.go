@@ -17,10 +17,10 @@ func FrontendRoute(e *echo.Echo, db *gorm.DB) {
 	})
 
 	e.GET("/", func(ctx echo.Context) error {
-		return ctx.Redirect(http.StatusTemporaryRedirect, "/scorepro/auth/login")
+		return ctx.Redirect(http.StatusTemporaryRedirect, "/check/auth/login")
 	})
 
-	frontendGroup := e.Group("/scorepro")
+	frontendGroup := e.Group("/check")
 	authController := config.InjectAuthController(db)
 	authGroup := frontendGroup.Group("/auth")
 	authGroup.GET("/login", authController.Index)
