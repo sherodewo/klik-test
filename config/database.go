@@ -2,7 +2,7 @@ package config
 
 import (
 	"fmt"
-	"go-checkin/config/credential"
+	"klik/config/credential"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"os"

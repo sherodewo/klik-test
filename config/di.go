@@ -5,9 +5,9 @@ package config
 
 import (
 	"github.com/google/wire"
-	"go-checkin/controllers"
-	"go-checkin/repository"
-	"go-checkin/service"
+	"klik/controllers"
+	"klik/repository"
+	"klik/service"
 	"gorm.io/gorm"
 )
 

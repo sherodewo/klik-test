@@ -1,4 +1,4 @@
-module go-checkin
+module klik
 
 go 1.17
 

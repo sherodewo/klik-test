@@ -12,7 +12,7 @@
             </div>
 
             <!--begin::Form-->
-            <form class="kt-form" method="POST" action="/check/admin/devisi/update/{{.data.ID}}" enctype="multipart/form-data">
+            <form class="kt-form" method="POST" action="/klik/admin/devisi/update/{{.data.ID}}" enctype="multipart/form-data">
                 <div class="kt-portlet__body">
                     {{if .flashMessage}}
                     {{if (eq .flashMessage.Type "error")}}
@@ -45,7 +45,7 @@
                         <button type="submit" class="btn btn-primary btn-brand btn-pill btn-elevate"
                                 id="kt_submit_update">Submit
                         </button>
-                        <a href="/check/admin/devisi" class="btn btn-secondary">Cancel</a>
+                        <a href="/klik/admin/devisi" class="btn btn-secondary">Cancel</a>
                     </div>
                 </div>
             </form>
@@ -93,7 +93,7 @@
         });
         form.ajaxSubmit({
             type: 'POST',
-            url: '/check/admin/devisi/update/{{.data.ID}}',
+            url: '/klik/admin/devisi/update/{{.data.ID}}',
             beforeSend: function (req) {
 
             },
@@ -106,7 +106,7 @@
                     icon: 'success',
                     text: "Data berhasil di update",
                 });
-                window.location.href = "/check/admin/devisi";
+                window.location.href = "/klik/admin/devisi";
             },
             error: function (response, status, xhr, $form) {
                 swal.hideLoading();

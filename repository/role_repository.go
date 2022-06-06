@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"go-checkin/models"
+	"klik/models"
 	"gorm.io/gorm"
 )
 

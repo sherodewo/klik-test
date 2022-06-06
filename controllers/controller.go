@@ -6,7 +6,7 @@ import (
 	"github.com/allegro/bigcache/v3"
 	"github.com/iancoleman/strcase"
 	"github.com/labstack/echo/v4"
-	"go-checkin/utils"
+	"klik/utils"
 	"gopkg.in/go-playground/validator.v9"
 	"net/http"
 )

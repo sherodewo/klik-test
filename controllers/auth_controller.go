@@ -3,10 +3,10 @@ package controllers
 import (
 	"github.com/foolin/goview/supports/echoview-v4"
 	"github.com/labstack/echo/v4"
-	"go-checkin/dto"
-	"go-checkin/service"
-	"go-checkin/utils"
-	"go-checkin/utils/session"
+	"klik/dto"
+	"klik/service"
+	"klik/utils"
+	"klik/utils/session"
 	"net/http"
 )
 

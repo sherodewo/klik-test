@@ -3,10 +3,10 @@ package service
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"go-checkin/dto"
-	"go-checkin/models"
-	"go-checkin/repository"
-	"go-checkin/utils"
+	"klik/dto"
+	"klik/models"
+	"klik/repository"
+	"klik/utils"
 	"gorm.io/gorm"
 	"time"
 )

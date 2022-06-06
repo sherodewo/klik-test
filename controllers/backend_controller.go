@@ -3,7 +3,7 @@ package controllers
 import (
 	"github.com/foolin/goview/supports/echoview-v4"
 	"github.com/labstack/echo/v4"
-	"go-checkin/utils/session"
+	"klik/utils/session"
 	"net/http"
 )
 

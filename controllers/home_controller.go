@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/labstack/echo/v4"
-	"go-checkin/utils/session"
+	"klik/utils/session"
 )
 
 type HomeController struct {

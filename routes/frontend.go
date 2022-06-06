@@ -4,7 +4,7 @@ import (
 	"github.com/foolin/goview"
 	"github.com/foolin/goview/supports/echoview-v4"
 	"github.com/labstack/echo/v4"
-	"go-checkin/config"
+	"klik/config"
 	"gorm.io/gorm"
 	"net/http"
 )

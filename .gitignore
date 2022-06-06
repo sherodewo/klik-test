@@ -17,4 +17,4 @@ logs
 
 # Env
 conf
-.env-*
+.env

@@ -1,9 +1,9 @@
 package service
 
 import (
-	"go-checkin/dto"
-	"go-checkin/models"
-	"go-checkin/repository"
+	"klik/dto"
+	"klik/models"
+	"klik/repository"
 	"gorm.io/gorm"
 )
 

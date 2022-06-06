@@ -2,9 +2,9 @@ package service
 
 import (
 	"github.com/allegro/bigcache/v3"
-	"go-checkin/dto"
-	"go-checkin/models"
-	"go-checkin/repository"
+	"klik/dto"
+	"klik/models"
+	"klik/repository"
 	"gorm.io/gorm"
 	"strconv"
 	"time"

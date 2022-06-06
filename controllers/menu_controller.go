@@ -3,10 +3,10 @@ package controllers
 import (
 	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo/v4"
-	"go-checkin/dto"
-	"go-checkin/models"
-	"go-checkin/service"
-	"go-checkin/utils/session"
+	"klik/dto"
+	"klik/models"
+	"klik/service"
+	"klik/utils/session"
 	"net/http"
 	"strconv"
 )

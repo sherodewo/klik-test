@@ -3,9 +3,9 @@ package middleware
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"go-checkin/models"
-	"go-checkin/utils"
-	"go-checkin/utils/session"
+	"klik/models"
+	"klik/utils"
+	"klik/utils/session"
 	"gorm.io/gorm"
 	"net/http"
 	"strings"

@@ -7,12 +7,12 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"go-checkin/config"
-	"go-checkin/config/credential"
-	middlewareFunc "go-checkin/middleware"
-	"go-checkin/models"
-	"go-checkin/routes"
-	"go-checkin/utils/session"
+	"klik/config"
+	"klik/config/credential"
+	middlewareFunc "klik/middleware"
+	"klik/models"
+	"klik/routes"
+	"klik/utils/session"
 	"io"
 	"log"
 	"net/http"
@@ -43,7 +43,7 @@ func main() {
 		return c.Render(http.StatusNotFound, "auth/error.html", nil)
 	}
 
-	e.Static("/check/assets", "assets")
+	e.Static("/klik/assets", "assets")
 
 	e.Pre(middleware.RemoveTrailingSlash())
 

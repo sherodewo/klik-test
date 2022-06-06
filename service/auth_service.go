@@ -1,10 +1,10 @@
 package service
 
 import (
-	"go-checkin/dto"
-	"go-checkin/models"
-	"go-checkin/repository"
-	"go-checkin/utils"
+	"klik/dto"
+	"klik/models"
+	"klik/repository"
+	"klik/utils"
 )
 
 type AuthService struct {

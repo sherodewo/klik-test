@@ -3,7 +3,7 @@ package middleware
 import (
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo/v4"
-	"go-checkin/utils/session"
+	"klik/utils/session"
 )
 
 func NewCookieStore() *sessions.CookieStore {
