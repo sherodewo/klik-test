@@ -12,7 +12,7 @@
             </div>
 
             <!--begin::Form-->
-            <form class="kt-form" method="POST" action="/check/admin/jabatan/detail/{{.data.ID}}" enctype="multipart/form-data">
+            <form class="kt-form" method="POST" action="/klik/admin/jabatan/detail/{{.data.ID}}" enctype="multipart/form-data">
                 <div class="kt-portlet__body">
                     {{if .flashMessage}}
                     {{if (eq .flashMessage.Type "error")}}
@@ -40,7 +40,7 @@
                 </div>
                 <div class="kt-portlet__foot">
                     <div class="kt-form__actions">
-                        <a href="/check/admin/jabatan" class="btn btn-secondary">Back</a>
+                        <a href="/klik/admin/jabatan" class="btn btn-secondary">Back</a>
                     </div>
                 </div>
             </form>

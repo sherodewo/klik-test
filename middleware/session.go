@@ -23,10 +23,10 @@ func SessionMiddleware(s *session.ConfigSession) echo.MiddlewareFunc {
 		return func(context echo.Context) error {
 			result, err := s.Get(context, session.SessionId)
 			if err != nil {
-				return context.Redirect(302, "/check/auth/login")
+				return context.Redirect(302, "/klik/auth/login")
 			}
 			if result == nil {
-				return context.Redirect(302, "/check/auth/login")
+				return context.Redirect(302, "/klik/auth/login")
 			} else {
 				return handlerFunc(context)
 			}

@@ -73,7 +73,7 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="/check/admin/role/add" class="btn btn-brand btn-elevate btn-icon-sm">
+                    <a href="/klik/admin/role/add" class="btn btn-brand btn-elevate btn-icon-sm">
                         <i class="la la-plus"></i>
                         New Role
                     </a>
@@ -104,7 +104,7 @@
             "header": false,
             "footer": false
         },
-        ajax: '/check/admin/role/datatable',
+        ajax: '/klik/admin/role/datatable',
         columns: [
             {
                 data: 'id',
@@ -134,7 +134,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: '/check/admin/role/delete/' + id,
+                    url: '/klik/admin/role/delete/' + id,
                     type: 'DELETE',
                     data: data,
                     processData: false,

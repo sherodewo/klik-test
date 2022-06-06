@@ -12,7 +12,7 @@
                 </div>
 
                 <!--begin::Form-->
-                <form class="kt-form" method="POST" action="/check/admin/users/update/{{.data.UserID}}" enctype="multipart/form-data">
+                <form class="kt-form" method="POST" action="/klik/admin/users/update/{{.data.UserID}}" enctype="multipart/form-data">
                     <div class="kt-portlet__body">
                         {{if .flashMessage}}
                             {{if (eq .flashMessage.Type "error")}}
@@ -62,7 +62,7 @@
                                 <label>Is Active: </label>
                                 <span class="kt-switch kt-switch--outline kt-switch--icon kt-switch--warning">
                                     <label>
-                                        <input type="checkbox" {{.data.IsActive}} name="is_active">
+                                        <input type="klikbox" {{.data.IsActive}} name="is_active">
                                         <span></span>
                                     </label>
                                 </span>
@@ -89,7 +89,7 @@
                             <button type="submit" class="btn btn-primary btn-brand btn-pill btn-elevate"
                                     id="kt_submit_update">Submit
                             </button>
-                            <a href="/check/admin/users/list" class="btn btn-secondary">Cancel</a>
+                            <a href="/klik/admin/users/list" class="btn btn-secondary">Cancel</a>
                         </div>
                     </div>
                 </form>
@@ -179,7 +179,7 @@
             });
             form.ajaxSubmit({
                 type: 'POST',
-                url: '/check/admin/register/update/{{.data.UserID}}',
+                url: '/klik/admin/register/update/{{.data.UserID}}',
                 beforeSend: function (req) {
 
                 },
@@ -192,7 +192,7 @@
                         icon: 'success',
                         text: "Data berhasil di update",
                     });
-                    window.location.href = "/check/admin/register";
+                    window.location.href = "/klik/admin/register";
                 },
                 error: function (response, status, xhr, $form) {
                     swal.hideLoading();
@@ -212,7 +212,7 @@
         //     allowClear: true,
         //     multiple: false,
         //     ajax: {
-        //         url: '/check/admin/roles/select2',
+        //         url: '/klik/admin/roles/select2',
         //         datatype: 'json',
         //         delay: 250,
         //         processResults: function (data) {

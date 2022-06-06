@@ -104,7 +104,7 @@
             "header": false,
             "footer": false
         },
-        ajax: '/check/admin/jabatan/datatable',
+        ajax: '/klik/admin/jabatan/datatable',
         columns: [
             {
                 data: 'id',
@@ -134,7 +134,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: '/check/admin/jabatan/delete/' + id,
+                    url: '/klik/admin/jabatan/delete/' + id,
                     type: 'DELETE',
                     data: data,
                     processData: false,

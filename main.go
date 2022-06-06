@@ -7,13 +7,13 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"io"
 	"klik/config"
 	"klik/config/credential"
 	middlewareFunc "klik/middleware"
 	"klik/models"
 	"klik/routes"
 	"klik/utils/session"
-	"io"
 	"log"
 	"net/http"
 	"os"
@@ -49,27 +49,6 @@ func main() {
 
 	//Database
 	db := config.NewDbMssql()
-
-	// Setup log folder
-	//if _, err := os.Stat(os.Getenv("LOG_FILE")); os.IsNotExist(err) {
-	//	err = os.MkdirAll(os.Getenv("LOG_FILE"), 0755)
-	//	if err != nil {
-	//		panic(err)
-	//	}
-	//}
-	//if _, err := os.Stat("./assets/upload/avatars/"); os.IsNotExist(err) {
-	//	err = os.MkdirAll("./assets/upload/avatars/", 0755)
-	//	if err != nil {
-	//		panic(err)
-	//	}
-	//}
-	//// Setup Log
-	//logPath := os.Getenv("LOG_FILE")
-	//logFileName := time.Now().Format("2006-01-02") + "-" + "los_cms.log"
-	//logFile, err := os.OpenFile(logPath+logFileName, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-	//if err != nil {
-	//	log.Fatal("Error create or open log file")
-	//}
 
 	//Validation
 	e.Validator = config.NewValidator()

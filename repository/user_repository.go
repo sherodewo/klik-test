@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"klik/models"
 	"gorm.io/gorm"
+	"klik/models"
 )
 
 type UserRepository interface {

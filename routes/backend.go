@@ -138,7 +138,7 @@ func BackendRoute(e *echo.Echo, db *gorm.DB) {
 
 	// You should use helper func `Middleware()` to set the supplied
 	// TemplateEngine and make `HTML()` work validly.
-	bGroup := e.Group("/check")
+	bGroup := e.Group("/klik")
 	backendGroup := bGroup.Group("/admin", mv, middleware.SessionMiddleware(session.Manager))
 	authorizationMiddleware := middleware.NewAuthorizationMiddleware(db)
 

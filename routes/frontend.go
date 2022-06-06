@@ -4,8 +4,8 @@ import (
 	"github.com/foolin/goview"
 	"github.com/foolin/goview/supports/echoview-v4"
 	"github.com/labstack/echo/v4"
-	"klik/config"
 	"gorm.io/gorm"
+	"klik/config"
 	"net/http"
 )
 
@@ -17,10 +17,10 @@ func FrontendRoute(e *echo.Echo, db *gorm.DB) {
 	})
 
 	e.GET("/", func(ctx echo.Context) error {
-		return ctx.Redirect(http.StatusTemporaryRedirect, "/check/auth/login")
+		return ctx.Redirect(http.StatusTemporaryRedirect, "/klik/auth/login")
 	})
 
-	frontendGroup := e.Group("/check")
+	frontendGroup := e.Group("/klik")
 	authController := config.InjectAuthController(db)
 	authGroup := frontendGroup.Group("/auth")
 	authGroup.GET("/login", authController.Index)
