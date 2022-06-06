@@ -35,16 +35,16 @@ func InjectMenuController(db *gorm.DB) controllers.MenuController {
 	return menuController
 }
 
-func InjectConfigController(db *gorm.DB) controllers.ConfigController {
-	repository := repository.NewConfigRepository(db)
-	service := service.NewConfigService(repository)
-	controller := controllers.NewConfigController(service)
-	return controller
-}
-
 func InjectRoleController(db *gorm.DB) controllers.RoleController {
 	repository := repository.NewRoleRepository(db)
 	service := service.NewRoleService(repository)
 	controller := controllers.NewRoleController(service)
+	return controller
+}
+
+func InjectProductController(db *gorm.DB) controllers.ProductController {
+	repository := repository.NewProductRepository(db)
+	service := service.NewProductService(repository)
+	controller := controllers.NewProductController(service)
 	return controller
 }

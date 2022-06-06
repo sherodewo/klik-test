@@ -167,18 +167,6 @@ func BackendRoute(e *echo.Echo, db *gorm.DB) {
 	userGroup.GET("/edit/:id", userController.Edit)
 	userGroup.POST("/update/:id", userController.Update)
 
-	//ConfigController
-	configController := config.InjectConfigController(db)
-	configGroup := backendGroup.Group("/config", authorizationMiddleware.AuthorizationMiddleware(menus, "config"))
-	configGroup.GET("", configController.Index)
-	configGroup.POST("/store", configController.Store)
-	configGroup.GET("/datatable", configController.Datatable)
-	configGroup.POST("/update/:id", configController.Update)
-	configGroup.GET("/:id", configController.Detail)
-	configGroup.POST("/delete/:id", configController.Delete)
-	bGroup.POST("/admin/config/set-active/:id", configController.SetActive)
-	bGroup.POST("/admin/config/set-inactive/:id", configController.SetInactive)
-
 	// RoleController
 	roleController := config.InjectRoleController(db)
 	roleGroup := backendGroup.Group("/role",authorizationMiddleware.AuthorizationMiddleware(menus,"role"))
@@ -190,4 +178,14 @@ func BackendRoute(e *echo.Echo, db *gorm.DB) {
 	roleGroup.POST("/update/:id",roleController.Update)
 	roleGroup.GET("/detail/:id",roleController.View)
 	roleGroup.DELETE("/delete/:id",roleController.Delete)
+
+	// RoleController
+	productController := config.InjectProductController(db)
+	productGroup := backendGroup.Group("/product",authorizationMiddleware.AuthorizationMiddleware(menus,"product"))
+	productGroup.GET("",productController.Index)
+	productGroup.GET("/:sku", productController.GetBySKU)
+	productGroup.GET("/datatable", productController.List)
+	productGroup.POST("/store",productController.Store)
+	productGroup.POST("/update/:sku",productController.Update)
+	productGroup.DELETE("/delete/:sku",productController.Delete)
 }
